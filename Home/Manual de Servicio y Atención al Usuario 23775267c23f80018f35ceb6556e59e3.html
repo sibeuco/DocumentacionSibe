@@ -1,0 +1,707 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Manual de Servicio y Atención al Usuario</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="23775267-c23f-8001-8f35-ceb6556e59e3" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1444090542259-0af8fa96557e?ixlib=rb-4.1.0&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon notion-static-icon" src="https://www.notion.so/icons/groups_orange.svg"/></div><h1 class="page-title">Manual de Servicio y Atención al Usuario</h1><p class="page-description"></p></header><div class="page-body"><h1 id="23775267-c23f-80af-8f9d-dbc1092a550e" class="">1. Introducción</h1><hr id="23775267-c23f-80c9-86da-ffbd274effaf"/><p id="23775267-c23f-806d-819f-dcc3255896cf" class="">Este manual establece los lineamientos y procedimientos generales que deben seguir todos los colaboradores de la Universidad Católica de Oriente, el Colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión, para prestar un servicio de atención amable, oportuna y adecuada a los usuarios internos, externos y otros grupos de interés. El objetivo es mejorar la gestión de los procesos internos y aumentar la satisfacción de los usuarios.</p><h1 id="23775267-c23f-8073-9307-c448428fa416" class="">2. Objetivo</h1><hr id="23775267-c23f-80b8-8958-d90108aae319"/><p id="23775267-c23f-805c-bf33-c62fc8c6c412" class="">Garantizar que la atención y el servicio ofrecidos a los usuarios internos y externos se realicen con calidad, oportunidad y amabilidad, contribuyendo a la mejora continua de los procesos institucionales y al fortalecimiento de la confianza y credibilidad en la institución.</p><h1 id="23775267-c23f-8040-bd46-dc7aad21edf3" class="">3. Alcance</h1><hr id="23775267-c23f-808b-bf64-c6ec2cdf7a8b"/><p id="23775267-c23f-80bd-8fc3-f0acd3ffd78a" class="">Este manual aplica a todos los colaboradores de la Universidad Católica de Oriente, el Colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión, especialmente a quienes son responsables directos de la atención a usuarios y grupos de interés, tanto en la ejecución de procesos como en la prestación de servicios.</p><h1 id="23775267-c23f-80bf-b9fc-faaa0ea1cc1d" class="">4. Marco Normativo y Legal</h1><hr id="23775267-c23f-804e-89f3-de2649a4e2dd"/><p id="23775267-c23f-800c-82ca-c20ffb766c0d" class="">El manual se fundamenta en la misión, principios e identidad institucional, y está alineado con la normatividad legal vigente, incluyendo:</p><ul id="eeeb56d5-44b4-42c6-8d25-7436860a3410" class="bulleted-list"><li style="list-style-type:disc">Constitución Política de Colombia (1991), artículos 13, 20 y 23.</li></ul><ul id="fd736761-6bac-445a-a16b-1ce3ba8c1d69" class="bulleted-list"><li style="list-style-type:disc">Ley 1755 de 2015, artículos 13, 14, 15, 20, 21 y 23.</li></ul><ul id="939514ad-1830-425c-8ca6-aa4caaf8bc52" class="bulleted-list"><li style="list-style-type:disc">Ley 1581 de 2012, artículos 5 a 18.</li></ul><ul id="deabac4f-bae0-45c6-91d3-8d82ed285cf1" class="bulleted-list"><li style="list-style-type:disc">Ley 1618 de 2013, artículos 6, 11, 14 y 16.</li></ul><ul id="deabdc7f-705c-421b-a51b-03561782592c" class="bulleted-list"><li style="list-style-type:disc">Ley 982 de 2005, artículos 8 y 38.</li></ul><ul id="66a2363a-4a45-434c-ad16-cf15e120a343" class="bulleted-list"><li style="list-style-type:disc">Ley 1346 de 2009, artículos 9 y 21.</li></ul><ul id="517896d3-951c-4744-87dc-7cca86dc0f41" class="bulleted-list"><li style="list-style-type:disc">Ley 1712 de 2014, artículos 9, 11, 18, 24, 25 y 26.</li></ul><p id="23775267-c23f-80de-b3b3-e3e548097f03" class="">Además, se consideran políticas internas relacionadas con la protección de datos personales y atención a usuarios.</p><h2 id="23775267-c23f-801a-bd8e-d88ddd54fa44" class=""><strong>4.1 Normatividad interna </strong></h2><p id="23775267-c23f-80ed-ad54-d19322055322" class="">Para efectos de aplicar y gestionar el Manual De Servicio y Atención al Usuario, la cual es orientada por la Misión, los principios y la identidad institucional; se tiene en cuenta la política de protección de datos personales y aquellas que tengan relación con atención a los usuarios tanto internos/externos y grupos de interés.</p><h1 id="23775267-c23f-807f-a851-d3282fa818ed" class=""><strong>5. Términos y Definiciones</strong></h1><hr id="23775267-c23f-80bc-91c8-df9db9c3a127"/><p id="23775267-c23f-8024-8e77-dd4f6f88a41f" class="">Las respuestas se darán de acuerdos a los términos dispuestos por los requisitos legales vigentes.</p><ul id="23775267-c23f-80d3-9010-d871c43c1dcd" class="bulleted-list"><li style="list-style-type:disc"><strong>PQRSFD:</strong> Son todas las Peticiones, Quejas, Reclamos, Sugerencias, Felicitaciones y Denuncias que eleven los usuarios internos y externos y demás partes interesadas de la Universidad Católica de Oriente, el colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión.</li></ul><ul id="23775267-c23f-800e-8dfc-d19cc657630f" class="bulleted-list"><li style="list-style-type:disc"><strong>Petición:</strong> Solicitudes realizadas a la Universidad Católica de Oriente, el colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión, que comprende entre otros, derechos de petición, solicitudes de información, solicitudes de documentos, solicitudes de conceptos o consultas.</li></ul><ul id="23775267-c23f-80b8-8f3b-c658a0f47d36" class="bulleted-list"><li style="list-style-type:disc"><strong>Derecho de Petición:</strong> Es aquel derecho que tiene toda persona a presentar peticiones generales o particulares de forma respetuosa ante La Universidad Católica de Oriente, el colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión, por motivos de interés general o particular, puede presentarse en forma verbal, por escrito a través de correo electrónico o en el sistema de PQRSF o a través de cualquier medio dispuesto por la Institución.</li></ul><ul id="23775267-c23f-80a1-aedc-f453606d8340" class="bulleted-list"><li style="list-style-type:disc"><strong>Queja:</strong> Es cualquier expresión verbal o escrita, que haga alusión a la insatisfacción por la conducta, acción u omisión de cualquier empleado o colaborador de la Universidad Católica de Oriente, el colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión.</li></ul><ul id="23775267-c23f-80e3-8a56-e433a29b0b4c" class="bulleted-list"><li style="list-style-type:disc"><strong>Reclamo:</strong> Es el derecho que tiene toda persona de exigir, reivindicar o demandar una solución, ya sea por motivo general o particular, referente a la prestación indebida de un servicio o a la falta de atención de una solicitud.</li></ul><ul id="23775267-c23f-800e-aa3c-ff7f9e8202c8" class="bulleted-list"><li style="list-style-type:disc"><strong>Sugerencia:</strong> Es la recomendación, manifestación o consejo que efectúa un usuario interno/externo a La Universidad Católica de Oriente, el colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión; con el fin de implementar una idea que permita a la Institución mejorar un modelo, procedimiento o servicio frente a un tema particular, cuyo impacto esté relacionado con la obtención de mejores resultados en la ejecución de su misión institucional. Las sugerencias se reciben inmediatamente, se registran y se cierran. Queda a criterio de La Universidad Católica de Oriente, el colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión, el tomar en consideración y dar solución solamente a aquellas sugerencias que considere procedentes y aplicables al objeto que desarrolla y siempre y cuando, disponga de los medios económicos, tecnológicos y humanos para desarrollar lo sugerido. La Universidad Católica de Oriente, el colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión, dará acuso de recibo al solicitante.</li></ul><ul id="23775267-c23f-80d2-9276-c80d76fd8702" class="bulleted-list"><li style="list-style-type:disc"><strong>Felicitación:</strong> es una comunicación con la que se está exaltando a la institución o a un funcionario por la excelente prestación de un servicio.</li></ul><ul id="23775267-c23f-8065-b72a-f594bc57743b" class="bulleted-list"><li style="list-style-type:disc"><strong>Usuario:</strong> Persona natural o jurídica interesada en recibir un bien o un servicio en los términos acordados con la Universidad Católica de Oriente, el colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión, las condiciones mínimas esperadas son calidad y oportunidad.</li></ul><ul id="23775267-c23f-80f5-83bd-ddd467716cba" class="bulleted-list"><li style="list-style-type:disc"><strong>Servicio:</strong> Combinación de los modelos y actividades desarrollados con recursos internos o externos, que permiten entregar un volumen de trabajo con los estándares requeridos dentro de un plazo, costo y calidad definidos.</li></ul><ul id="23775267-c23f-8029-85db-fee6718355ee" class="bulleted-list"><li style="list-style-type:disc"><strong>Coordinación de Servicio y Atención al Usuario:</strong> Es el área o rol responsable de gestionar, monitorear y responder las solicitudes de los usuarios tanto internos como externos de la Universidad Católica de Oriente, el colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión, a través de una serie de actividades y responsabilidades, siempre enfocado en la calidad de la prestación del servicio oportuno y eficaz.</li></ul><ul id="23775267-c23f-8029-9f8a-c9e692467146" class="bulleted-list"><li style="list-style-type:disc"><strong>Solicitud de Información:</strong> Es el derecho que tiene toda persona a formular una solicitud respetuosa ante La Universidad Católica de Oriente, el colegio Monseñor Alfonso Uribe Jaramillo y los servicios de extensión; con relación a la acción de las autoridades y funciones de este, buscando obtener una pronta respuesta.</li></ul><ul id="23775267-c23f-80ec-b4bb-cc59cedca6fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Usuario interno/externo Grupos de Interés:</strong> La Institución cuenta con Usuarios internos/externos y diferentes Grupos de Interés, los cuales identifica, prioriza y define estrategias para aumentar su satisfacción frente a los trámites y servicios prestados y a quienes se identifican sus diferentes “necesidades y “expectativas como se describe en el Anexo 3, <strong>“Matriz Grupos de Interés”.</strong></li></ul><h1 id="23775267-c23f-80ab-9b06-c0848d940963" class=""><strong>6. Estructura del Manual</strong></h1><hr id="23775267-c23f-807e-9936-e8f623758593"/><p id="23775267-c23f-80a2-8459-c8a457f65dfb" class="">La estructura del Manual de Servicio y Atención Usuario está definida de tal forma que es claro para los involucrados el rol y la responsabilidad en la ejecución de las actividades y cuáles son sus límites:</p><figure id="23775267-c23f-80a2-bc3c-d9cda9be30ac" class="image"><a href="Manual%20de%20Servicio%20y%20Atenci%C3%B3n%20al%20Usuario/image.png"><img style="width:635.2000122070312px" src="Manual%20de%20Servicio%20y%20Atenci%C3%B3n%20al%20Usuario/image.png"/></a></figure><p id="23775267-c23f-8062-9812-fab8511798fe" class="">
+</p><h1 id="23775267-c23f-80bf-98f9-c6a33db1ab1c" class="">7. <strong>Importancia de Brindar un Servicio y Atención Oportuna</strong></h1><hr id="23775267-c23f-80fc-bbec-e022dca7887f"/><ul id="7eef7736-c358-4a6a-aafe-fef96b5f51f7" class="bulleted-list"><li style="list-style-type:disc">Asegurar un enfoque equilibrado para satisfacer necesidades y expectativas de usuarios y grupos de interés.</li></ul><ul id="7224e4bc-a156-4ccf-9178-178796482fe5" class="bulleted-list"><li style="list-style-type:disc">Incrementar la credibilidad y confianza mediante respuestas oportunas.</li></ul><ul id="8bb33412-8801-4453-9adb-8983f73734fd" class="bulleted-list"><li style="list-style-type:disc">Mejorar el relacionamiento interno, aumentando el bienestar y la productividad laboral.</li></ul><h1 id="23775267-c23f-800c-979b-cefe49c1e433" class=""><strong>8. Pilares de Atención y Servicio al Usuario</strong></h1><hr id="23775267-c23f-809a-bdae-c897b6e09d08"/><ul id="78e50c97-0630-495d-9618-cc46ec41ce05" class="bulleted-list"><li style="list-style-type:disc"><strong>Sentido de Pertenencia:</strong> Identificación con los valores institucionales para mejorar la experiencia del usuario.</li></ul><ul id="836691be-79bf-4ab7-8c53-a5d0b66727fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Trascendencia de Servicio:</strong> Actitud de apoyo y colaboración que va más allá de la necesidad inmediata del usuario.</li></ul><ul id="376361ca-ef7e-4541-9f7f-4aca7ace64e5" class="bulleted-list"><li style="list-style-type:disc"><strong>Eficiencia en la Atención:</strong> Gestión ágil y oportuna que supere las expectativas del usuario.</li></ul><h1 id="23775267-c23f-809d-900e-f589c85e3b47" class="">9. <strong>Estrategias de servicio</strong></h1><hr id="23775267-c23f-80ee-a45a-d4473483a673"/><h2 id="23775267-c23f-80d3-baea-e2f2f0fe3924" class=""><strong>9.1 Promover una Cultura de Servicio</strong></h2><p id="e4cc004d-9999-4573-8b45-78dd084a8b35" class="">Basada en:</p><ul id="d423e738-9d33-4089-bb68-618f3761d387" class="bulleted-list"><li style="list-style-type:disc">Mejoramiento continuo.</li></ul><ul id="a876b11e-460f-4b46-b61e-b3f4e3c50dcc" class="bulleted-list"><li style="list-style-type:disc">Cuidado de la casa común.</li></ul><ul id="75d06c7f-2a5b-4088-a5e4-0feac03560f9" class="bulleted-list"><li style="list-style-type:disc">Servicio desde la identidad institucional.</li></ul><p id="10b33b0c-dbe2-4537-8494-d1c741404b81" class="">Los colaboradores deben practicar valores como equidad, liderazgo, eficiencia, transparencia, integridad y responsabilidad.</p><h2 id="23775267-c23f-80be-8441-df66e2a504e2" class="">9<strong>.2 Gestionar las Comunicaciones Internas y Externas</strong></h2><ul id="c7459653-a1b7-4c4e-8513-e8646a250e1d" class="bulleted-list"><li style="list-style-type:disc">Comunicación clara, oportuna y proactiva.</li></ul><ul id="0d199cfe-8730-4ee7-96f7-f97e8cbdb4b5" class="bulleted-list"><li style="list-style-type:disc">Uso de lenguaje positivo y escucha activa.</li></ul><ul id="9632df91-1635-4a38-ae1b-fe9df2f258e5" class="bulleted-list"><li style="list-style-type:disc">Cumplimiento de la Política de Comunicaciones (Acuerdo CD-015/2021).</li></ul><figure id="23775267-c23f-80bb-99a0-e606eb47f8f3" class="image"><a href="Manual%20de%20Servicio%20y%20Atenci%C3%B3n%20al%20Usuario/image%201.png"><img style="width:635.2000122070312px" src="Manual%20de%20Servicio%20y%20Atenci%C3%B3n%20al%20Usuario/image%201.png"/></a></figure><h3 id="23775267-c23f-8029-9936-df9a14e535bd" class=""><strong>Usuario Interno</strong>:</h3><figure id="23775267-c23f-80a5-a311-d5e7b1ecaa6e" class="image"><a href="Manual%20de%20Servicio%20y%20Atenci%C3%B3n%20al%20Usuario/image%202.png"><img style="width:635.2000122070312px" src="Manual%20de%20Servicio%20y%20Atenci%C3%B3n%20al%20Usuario/image%202.png"/></a></figure><h3 id="23775267-c23f-8025-8044-fad2084c7f52" class=""><strong>Usuario externo:</strong></h3><figure id="23775267-c23f-806e-8a00-fc07f52aa166" class="image"><a href="Manual%20de%20Servicio%20y%20Atenci%C3%B3n%20al%20Usuario/image%203.png"><img style="width:635.2000122070312px" src="Manual%20de%20Servicio%20y%20Atenci%C3%B3n%20al%20Usuario/image%203.png"/></a></figure><h2 id="23775267-c23f-809f-8dbc-e3889a49df52" class="">9.3 <strong> Medir la percepción de la satisfacción</strong></h2><ul id="dc0b5e5a-a0c0-4359-990e-73eceb57177f" class="bulleted-list"><li style="list-style-type:disc">Implementación de un sistema de medición anual con instrumentos cualitativos y cuantitativos.</li></ul><ul id="fdd70483-144a-404c-8db6-097b761dd8aa" class="bulleted-list"><li style="list-style-type:disc">Segmentación de resultados por dependencias y direcciones.</li></ul><ul id="325f9591-b6f9-48d0-9127-62fab45a18cd" class="bulleted-list"><li style="list-style-type:disc">Seguimiento continuo a oportunidades de mejora por parte de líderes.</li></ul><h1 id="23775267-c23f-808a-bcae-fbd0bba86278" class=""><strong>10. Metodología para el Análisis de la Percepción de Satisfacción</strong></h1><hr id="23775267-c23f-80bb-b3ed-faeb15845ed1"/><p id="23775267-c23f-80f1-a3f7-feb0b42ba587" class="">Una vez se obtenidos los datos del instrumento de medición se unifican comentarios segmentados por las Dependencias y Direcciones de la Universidad Católica de Oriente y de los servicios de extensión; esta información estará unificada en un informe que se socializará con los líderes de las áreas inmersas en el proceso de medición de la percepción de satisfacción. Se realizará seguimiento de manera continua por parte de los líderes de cada una de las Dependencias y Direcciones a las oportunidades de mejora y serán los lideres los encargados de implementar las acciones que corresponda.</p><h1 id="23775267-c23f-80f5-9c22-d03774188f21" class=""><strong>11. Lineamientos Generales de Servicio y Atención al Usuario</strong></h1><hr id="23775267-c23f-8082-b71f-d8a8345574ef"/><ul id="be27ee1a-c25f-4505-a43b-bb9dcaa3ad79" class="bulleted-list"><li style="list-style-type:disc">Conocer y actualizar permanentemente los requerimientos y expectativas de los usuarios.</li></ul><ul id="f9dc705c-bfff-4556-aa84-d494036489b6" class="bulleted-list"><li style="list-style-type:disc">Mantener bases de datos actualizadas, respetando la política de protección de datos.</li></ul><ul id="caed0125-b096-4ae4-83c5-98e1ffa07192" class="bulleted-list"><li style="list-style-type:disc">Responder oportunamente a peticiones, quejas, reclamos, sugerencias, felicitaciones y denuncias.</li></ul><ul id="fc6d1a4c-1297-48a6-ac88-2b3cb08424b9" class="bulleted-list"><li style="list-style-type:disc">Fomentar la participación y compromiso de todos los colaboradores con la excelencia en el servicio.</li></ul><ul id="7ce168a6-23ec-4039-afd0-3a2a3b8d78f8" class="bulleted-list"><li style="list-style-type:disc">Capacitar y retroalimentar al personal sobre estándares de servicio.</li></ul><ul id="9f794828-1c3e-404c-ac6c-4e76b57477b8" class="bulleted-list"><li style="list-style-type:disc">Incorporar estos lineamientos en procesos de inducción y formación continua.</li></ul><h1 id="23775267-c23f-8069-b595-eb65372928aa" class="">12. <strong>Protocolos de Servicio y Atención al Usuario</strong></h1><hr id="23775267-c23f-80e1-b949-e04f82d31225"/><p id="23775267-c23f-803e-aeb6-fb64ad1bdcc8" class="">Se establecen pautas para la atención a través de diferentes canales, normalizando la calidad y efectividad del servicio, y cumpliendo con el Manual Corporativo de Imagen, Etiqueta y Presentación Personal, así como el Protocolo de Comunicación y Relacionamiento.</p><h1 id="23775267-c23f-8086-b5c1-c69c870b69ec" class=""><strong>13. Canales de Atención y Comunicación</strong></h1><hr id="23775267-c23f-8023-afc2-d0730d7a7973"/><h2 id="fa04ab6c-94e9-43b9-b631-26f029e1e75b" class="">13.1 Canales Presenciales</h2><ul id="bfdadeb4-20ef-4be9-b8e6-74b36a9a1a63" class="bulleted-list"><li style="list-style-type:disc">Oficinas de servicio y atención al usuario.</li></ul><ul id="bda9ccf0-8007-462a-bb1b-42ecbf327e5a" class="bulleted-list"><li style="list-style-type:disc">Puntos de información académicos, administrativos y de servicios.</li></ul><ul id="f9ecf4f2-f9a2-4e65-a2e6-d82094b1825e" class="bulleted-list"><li style="list-style-type:disc">Porterías de ingreso.</li></ul><h2 id="ce4f4012-5ca4-47c4-ba59-5be721727ed7" class="">13.2 Canales Telefónicos</h2><ul id="43f1e6a0-bea7-424d-b474-e636c8ff760f" class="bulleted-list"><li style="list-style-type:disc">Conmutador principal: (604) 569 90 90, opción 0.</li></ul><ul id="cd42587e-9676-4f5a-be89-697a644979da" class="bulleted-list"><li style="list-style-type:disc">Extensiones internas con protocolo para atención de llamadas.</li></ul><h2 id="912415b0-3307-419b-b368-b7b7ecc53cab" class="">13.3 Medio Radial</h2><ul id="6b8525cb-02ab-43d3-abae-83c521fcb763" class="bulleted-list"><li style="list-style-type:disc">Emisora Sinigual FM Estéreo 90.5, con cobertura en 30 municipios.</li></ul><ul id="ff1f2108-b571-40b3-aa30-392b36a26563" class="bulleted-list"><li style="list-style-type:disc">Transmisión 24/7, atención a usuarios de lunes a sábado 6:00 a.m. - 6:00 p.m. y domingo 6:00 a.m. - 4:00 p.m.</li></ul><ul id="a5220c77-b056-42a1-a03f-94351300f6df" class="bulleted-list"><li style="list-style-type:disc">Contenido evangelizador, cultural, educativo e informativo.</li></ul><h2 id="9aebb814-bc5b-4f79-af33-31950f421d6e" class="">13.4 Medios Virtuales</h2><ul id="4ad5c65d-641a-4178-8128-144d791389c4" class="bulleted-list"><li style="list-style-type:disc">Redes sociales: WhatsApp, Instagram, Facebook, X, YouTube, LinkedIn, TikTok, Threads.</li></ul><ul id="5695cf12-e370-49fc-9f0c-d0084e942c3f" class="bulleted-list"><li style="list-style-type:disc">Uso para informar, fortalecer relaciones, posicionar la marca y ofertar servicios.</li></ul><ul id="2b2329cd-455d-4d70-bbfa-c9d04f69dc07" class="bulleted-list"><li style="list-style-type:disc">Definición clara de tipo de interacción, público objetivo y tiempos de respuesta.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
