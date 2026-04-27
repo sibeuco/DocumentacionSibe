@@ -1,0 +1,15 @@
+<div class="principal-container d-flex col-12 justify-content-between">
+    <div class="left-data-container">
+        <app-total-participants [imageUrl]="imageUrl" [tipoEstructura]="tipoEstructura"
+            [nombreArea]="nombreArea" [filtersRequest]="filtersRequest">
+        </app-total-participants>
+    </div>
+    <div class="right-data-container">
+        <div class="title-container col d-flex justify-content-center align-items-center">
+            <h1 class="right-data-title">Participantes por área</h1>
+        </div>
+        <div class="chart-activities-container">
+            <canvas id="participantsChart"></canvas>
+        </div>
+    </div>
+</div>

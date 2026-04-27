@@ -1,0 +1,14 @@
+<div class="col-12 align-items-center justify-content-center">
+    <div class="department-users">
+        <app-department-users (usuarioSeleccionadoParaEditar)="onUsuarioSeleccionadoParaEditar($event)"></app-department-users>
+    </div>
+    <div class="areas-users">
+        <app-area-users (usuarioSeleccionadoParaEditar)="onUsuarioSeleccionadoParaEditar($event)"></app-area-users>
+    </div>
+    
+    <!-- Modal compartido para editar usuarios -->
+    <app-edit-user 
+        [usuarioAEditar]="usuarioSeleccionado" 
+        (usuarioActualizado)="onUsuarioActualizado($event)">
+    </app-edit-user>
+</div>

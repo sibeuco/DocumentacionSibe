@@ -1,0 +1,171 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.area-users-container{
+    background-color: $white-color;
+    margin-top: 2%;
+    margin-bottom: $margin-from-footer;
+    width: 98%;
+    margin-left: 1%;
+    min-height: 400px;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+    overflow: visible;
+}
+
+.users-title{
+    font-size: $font-big-size;
+    font-weight: bold;
+    color: $dark-green;
+    margin-top: 1rem;
+}
+
+.top-table-container{
+    margin-top: $general-margin-top;
+}
+
+.search-button{
+    width: 90%;
+}
+
+.form-control{
+    height: 40px;
+    font-size: $font-general-size;
+    background-color: $background-color;
+}
+
+input.form-control:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 0.1rem rgba(0, 0, 0, 0.25) ;
+  outline: none;
+}
+
+.tabla-wrapper {
+  max-width: 90%;
+  margin-top: $general-margin-top;
+  font-size: $font-general-size;
+  overflow: visible;
+}
+
+.edit-user-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  font-size: 1.1rem;
+  padding: 0;
+}
+
+.delete-user-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  font-size: 1.1rem;
+  padding: 0;
+}
+
+.edit-user-button i {
+  margin: 0;
+}
+
+// Estilos para el modal de confirmación
+#confirmDeleteAreaModal {
+  .modal-container {
+    border-radius: $general-border-radius;
+  }
+
+  .modal-content {
+    border: none;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  .modal-header {
+    background-color: $primary-color;
+    border-radius: $general-border-radius $general-border-radius 0 0;
+
+    .modal-title {
+      color: $white-color;
+      font-weight: bold;
+    }
+  }
+
+  .modal-body {
+    padding: 2rem;
+    text-align: center;
+
+    .alert {
+      border-radius: $general-border-radius;
+      border: none;
+      background-color: #fff3cd;
+      color: #856404;
+      font-size: $font-general-size;
+    }
+  }
+
+  .modal-footer {
+    border-top: none;
+    padding: 1.5rem 2rem;
+
+    .btn {
+      border-radius: $buttons-border-radius;
+      font-weight: 500;
+      font-size: $font-general-size;
+      padding: 0.8rem 2rem;
+
+      &.delete-button {
+        background-color: $red-color;
+        border-color: $red-color;
+        width: 30%;
+
+        &:hover:not(:disabled) {
+          background-color: darken($red-color, 10%);
+          border-color: darken($red-color, 10%);
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+      }
+
+      &.cancel-button {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        width: 30%;
+
+        &:hover {
+          background-color: #5a6268;
+          border-color: #545b62;
+        }
+      }
+    }
+  }
+
+  .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+    font-weight: bold;
+    font-size: 1.5rem;
+    top: 10px;
+    right: 15px;
+  }
+
+  .btn-close:hover {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+  }
+
+  // Estilos para el mensaje de éxito
+  .text-success {
+    color: $primary-color !important;
+  }
+
+  .text-muted {
+    color: #6c757d !important;
+  }
+}

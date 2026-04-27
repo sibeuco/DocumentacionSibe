@@ -1,0 +1,163 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.modal-container{
+    border-radius: $general-border-radius;
+}
+
+.modal-header{
+    background-color: $primary-color;
+}
+
+.modal-content{
+    width: 100%;
+}
+
+.modal-title{
+    font-weight: bold;
+    color: $white-color;
+}
+
+.btn-close{
+    filter: brightness(0) invert(1);
+    opacity: 1;
+    font-weight: bold;
+    font-size: 1.5rem;
+    top: 10px;
+    right: 15px;
+}
+
+.btn-close:hover{
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.info-text{
+    font-size: $font-general-size;
+    color: $dark-green;
+    margin-bottom: 5px;
+}
+
+.info-text-small{
+    font-size: $font-general-size;
+    color: $muted-gray-color;
+    margin-bottom: 0;
+}
+
+.upload-area{
+    border: 2px dashed $border-label-color;
+    border-radius: 10px;
+    padding: 40px 20px;
+    background-color: $light-gray-color;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover{
+        border-color: $primary-color;
+        background-color: $light-gray-alt-color;
+    }
+
+    &.has-file{
+        border-color: $success-color;
+        background-color: lighten($success-color, 55%);
+    }
+    
+    .btn-secondary-custom{
+        font-size: $font-general-size;
+        background-color: $secondary-color;
+        border-color: $secondary-color;
+        color: $dark-green;
+        
+        &:hover{
+            background-color: darken($secondary-color, 5%);
+            border-color: darken($secondary-color, 5%);
+        }
+    }
+    
+    .text-muted{
+        font-size: $font-general-size;
+    }
+}
+
+.upload-icon{
+    i{
+        transition: transform 0.3s ease;
+    }
+}
+
+.upload-area:hover .upload-icon i{
+    transform: scale(1.1);
+}
+
+.selected-file{
+    background-color: $light-gray-color;
+    border: 1px solid $border-light-color;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.file-info{
+    flex-grow: 1;
+}
+
+.file-name{
+    font-weight: 600;
+    color: $dark-green;
+    font-size: $font-general-size;
+}
+
+.file-size{
+    color: $muted-gray-light-color;
+    font-size: $font-general-size;
+}
+
+.upload-button{
+    background-color: $primary-color;
+    font-size: $font-general-size;
+    border-color: $primary-color;
+    min-width: 150px;
+    
+    &:hover{
+        background-color: darken($primary-color, 5%);
+        border-color: darken($primary-color, 5%);
+    }
+
+    &:disabled{
+        background-color: $disabled-color;
+        border-color: $disabled-color;
+        cursor: not-allowed;
+    }
+}
+
+.cancel-button{
+    font-size: $font-general-size;
+    min-width: 120px;
+}
+
+.text-danger {
+    color: $red-color;
+    font-size: $font-general-size;
+    font-weight: 500;
+}
+
+.text-success {
+    color: $success-color;
+    font-size: $font-general-size;
+    font-weight: 500;
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .upload-area{
+        padding: 30px 15px;
+    }
+
+    .modal-title{
+        font-size: 1.3rem;
+    }
+
+    .upload-button, .cancel-button{
+        min-width: 100px;
+        font-size: 0.9rem;
+    }
+}
+

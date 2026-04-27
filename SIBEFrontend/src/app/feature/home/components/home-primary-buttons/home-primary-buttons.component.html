@@ -1,0 +1,30 @@
+<div class="buttons-container d-flex justify-content-between gap-3">
+    <button routerLink="/gestionar-direccion" class="btn btn-primary flex-fill">
+        <i class="bi bi-pc-display"></i>
+        Gestionar Dirección
+    </button>
+
+    <button class="btn btn-primary flex-fill" (click)="scrollToFilters()">
+        <i class="bi bi-clipboard-data"></i>
+        Ver Resumen
+    </button>
+
+    <button class="btn btn-primary flex-fill" (click)="generarExcel()"
+        [disabled]="generandoExcel || esColaborador"
+        [title]="esColaborador ? 'Tu rol no permite realizar esta acción.' : ''">
+        <i class="bi bi-journal-plus"></i>
+        <span *ngIf="!generandoExcel">Generar Informes</span>
+        <span *ngIf="generandoExcel">Generando...</span>
+    </button>
+
+</div>
+
+<div *ngIf="mensajeError" class="alert alert-danger d-flex align-items-center mt-3" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <div>{{ mensajeError }}</div>
+</div>
+
+<div *ngIf="mensajeExito" class="alert alert-success d-flex align-items-center mt-3" role="alert">
+    <i class="bi bi-check-circle-fill me-2"></i>
+    <div>{{ mensajeExito }}</div>
+</div>

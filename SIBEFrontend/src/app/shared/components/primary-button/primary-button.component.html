@@ -1,0 +1,8 @@
+<span *ngIf="modalTargetId" [title]="disabled ? disabledTooltip : ''">
+  <button class="btn btn-primary d-inline-flex align-items-center gap-2 px-3 py-2"
+     [disabled]="disabled"
+     (click)="openModal(modalTargetId)">
+    <i [class]="icon + ' fs-2'"></i>
+    <span>{{ text }}</span>
+  </button>
+</span>

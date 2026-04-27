@@ -1,0 +1,84 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.activity-info-container {
+    background-color: $white-color;
+    margin-top: $general-margin-top;
+    margin-bottom: 2rem;
+    width: 98%;
+    margin-left: $general-margin-left;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-info{
+    font-size: $font-big-size;
+    font-weight: bold;
+    color: $dark-green;
+}
+
+.info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: $general-margin-top;
+}
+
+.info-label {
+    justify-content: center;
+    font-size: $little-font-size;
+    padding: 0.4rem;
+}
+
+.info-text {
+    margin: 0;
+    padding: 0.75rem;
+    background-color: $background-color;
+    border:$black-color;
+    border-radius: $general-border-radius;
+    color: $black-color;
+    font-size: $little-font-size;
+    word-wrap: break-word;
+}
+
+.no-activity-container {
+    margin-top: 2rem;
+}
+
+.alert {
+    border-radius: $general-border-radius;
+    border: none;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+// Responsive design
+@media (min-width: 768px) {
+    .info-row {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .info-label {
+        flex: 0 0 200px;
+        margin-bottom: 0;
+    }
+    
+    .info-value {
+        flex: 1;
+        padding-left: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .activity-info-container {
+        padding: 30px;
+    }
+    
+}
+

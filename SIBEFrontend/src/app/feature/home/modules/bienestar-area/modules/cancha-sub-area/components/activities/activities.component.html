@@ -1,0 +1,41 @@
+<div class="activities-container">
+    <div class="title-container d-flex justify-content-center align-items-center">
+        <h1 class="activities-title">Mis Actividades</h1>
+    </div>
+    <app-separator></app-separator>
+    <div class="top-table-container col-12 d-flex align-items-center justify-content-center">
+        <div class="search-button row align-items-center justify-content-between mt-3">
+            <div class="search-container col-md-6 col-12 mb-2 mb-md-0">
+                <input
+                    type="search"
+                    class="form-control"
+                    placeholder="Buscar Actividad..."
+                    [(ngModel)]="terminoBusqueda"
+                    (ngModelChange)="onBuscarActividad($event)"/>
+            </div>
+            <div class="button-container col-md-4 col-12 d-flex justify-content-md-end justify-content-center">
+                <app-primary-button
+                    [disabled]="esColaborador"
+                    [disabledTooltip]="'No tienes permitida esta acción.'"
+                    [modalTargetId]="'register-activity-modal'"
+                    [icon]="'bi bi-plus-circle'"
+                    [text]="'Agregar nueva actividad'">
+                </app-primary-button>
+                <app-register-new-activity 
+                    [nombreArea]="nombreArea"
+                    [tipoEstructura]="tipoEstructura"
+                    (actividadCreada)="onActividadCreada()">
+                </app-register-new-activity>
+            </div>
+            <div class="activities-table-container">
+                <app-activities-table 
+                    [nombreArea]="nombreArea"
+                    [tipoEstructura]="tipoEstructura"
+                    [rutaRedireccion]="'/home/area-bienestar/sub-area-cancha-sintetica/asistencia-actividad-subarea-cancha'"
+                    [terminoBusqueda]="terminoBusqueda"
+                    (actividadSeleccionada)="onActividadSeleccionada($event)">
+                </app-activities-table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.department-container{
+    background-color: $white-color;
+    margin-top: $general-margin-top;
+    width: 98%;
+    margin-left: 1%;
+    min-height: 400px;
+    height: auto;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+    padding-bottom: 20px;
+}
+
+.department-title{
+    font-size: $font-big-size;
+    font-weight: bold;
+    color: $dark-green;
+    text-align: center;
+    padding: 0 1rem;
+    
+    @media (max-width: 768px) {
+        margin-top: 2rem;
+    }
+}
+
+.form-container{
+    margin-top: 2rem;
+    background-color: $secondary-color;
+    width: 90%;
+    max-width: 600px;
+    height: 0.5rem;
+    border-radius: $general-border-radius;
+}
+
+.btn{
+    font-size: $font-general-size;
+    color: $white-color;
+    background-color: $primary-color;
+    border-color: $primary-color;
+    width: 100%;
+    max-width: 400px;
+    padding: 0.75rem 1.5rem;
+    
+    &:hover {
+        background-color: darken($primary-color, 5%);
+        border-color: darken($primary-color, 5%);
+    }
+    
+    &:first-child {
+        margin-top: 3rem;
+    }
+    
+    // En pantallas pequeñas, reduce el max-width
+    @media (max-width: 768px) {
+        max-width: 350px;
+    }
+    
+    @media (max-width: 480px) {
+        max-width: 300px;
+    }
+}

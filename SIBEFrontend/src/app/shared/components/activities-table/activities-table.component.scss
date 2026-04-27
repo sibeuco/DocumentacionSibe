@@ -1,0 +1,331 @@
+@import '../../../../assets/scss/modules/var';
+
+.activities-table-container {
+  width: 100%;
+  min-height: 400px;
+  margin: $general-margin-top 0;
+  background: $white-color;
+  border-radius: $general-border-radius;
+  box-shadow: $sombra-general;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .table-wrapper {
+    overflow-x: auto;
+    overflow-y: visible;
+    width: 100%;
+    max-width: 100%;
+
+    // Estilos para el scroll
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+
+      &:hover {
+        background: #a8a8a8;
+      }
+    }
+
+    .edit-activity-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      font-size: 1.1rem;
+      padding: 0;
+      margin: 0 auto;
+    }
+
+    .edit-activity-button i {
+      margin: 0;
+    }
+
+    .edit-action {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .activities-table {
+      width: 100%;
+      min-width: 800px; // Ancho mínimo para mantener legibilidad
+      border-collapse: collapse;
+      font-family: $font-general;
+
+      thead {
+        background: $background-color;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra sutil para el encabezado flotante
+
+        th {
+          padding: 1.5rem 2rem;
+          text-align: left;
+          font-size: $font-general-size;
+          font-weight: 600;
+          color: $dark-green;
+          border-bottom: 2px solid $border-label-color;
+          background: $background-color; // Asegurar que el fondo se mantenga
+          white-space: nowrap; // Evitar que el texto se rompa en múltiples líneas
+
+          // Anchos específicos para cada columna
+          &:nth-child(1) { width: 25%; } // Nombre Actividad
+          &:nth-child(2) { width: 18%; } // Colaborador
+          &:nth-child(3) { width: 12%; } // Fecha Creación
+          &:nth-child(4) { width: 12%; } // Fecha Programada
+          &:nth-child(5) { width: 10%; } // Ruta Insumos
+          &:nth-child(6) { width: 10%; } // Estado
+          &:nth-child(7) { width: 8%; } // Acción Gestionar
+          &:nth-child(8) { width: 5%; } // Acción Editar
+
+          // Estilos para encabezados ordenables
+          &.sortable {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: rgba(0, 139, 80, 0.1);
+            }
+
+            span {
+              display: inline-flex;
+              align-items: center;
+              gap: 0.5rem;
+            }
+
+            .sort-indicator {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 1.2rem;
+              height: 1.2rem;
+              opacity: 0.5;
+              transition: opacity 0.3s ease, color 0.3s ease;
+
+              .sort-icon {
+                font-size: 1rem;
+                font-style: normal;
+                font-weight: bold;
+              }
+
+              // Estados del indicador
+              &.sort-asc {
+                opacity: 1;
+                color: $primary-color;
+
+                .sort-icon::before {
+                  content: '↑';
+                }
+              }
+
+              &.sort-desc {
+                opacity: 1;
+                color: $primary-color;
+
+                .sort-icon::before {
+                  content: '↓';
+                }
+              }
+
+              // Estado por defecto (sin ordenar)
+              &:not(.sort-asc):not(.sort-desc) {
+                .sort-icon::before {
+                  content: '↕';
+                }
+              }
+            }
+
+            &:hover .sort-indicator {
+              opacity: 0.8;
+            }
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          border-bottom: 1px solid $border-label-color;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: rgba(0, 139, 80, 0.05);
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          td {
+            padding: 1.5rem 2rem;
+            font-size: $font-general-size;
+            color: $black-color;
+            vertical-align: middle;
+
+            // Aplicar los mismos anchos que las columnas del encabezado
+            &:nth-child(1) { width: 25%; } // Nombre Actividad
+            &:nth-child(2) { width: 18%; } // Colaborador
+            &:nth-child(3) { width: 12%; } // Fecha Creación
+            &:nth-child(4) { width: 12%; } // Fecha Programada
+            &:nth-child(5) { width: 10%; } // Ruta Insumos
+            &:nth-child(6) { width: 10%; } // Estado
+            &:nth-child(7) { width: 8%; } // Acción Gestionar
+            &:nth-child(8) { width: 5%; } // Acción Editar
+
+            &.activity-name {
+              font-weight: 500;
+              color: $dark-green;
+            }
+
+            &.collaborator {
+              color: $black-color;
+            }
+
+            &.creation-date {
+              color: $black-color;
+            }
+
+            &.programmed-date {
+              color: $black-color;
+            }
+
+            &.ruta-insumos {
+              color: $black-color;
+              font-size: 0.9rem;
+              word-break: break-word;
+              max-width: 150px;
+            }
+
+            &.status {
+              .status-badge {
+                display: inline-block;
+                padding: 0.5rem 1rem;
+                border-radius: $buttons-border-radius;
+                font-size: $little-font-size;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+
+                &.status-pendiente {
+                  background-color: rgba(255, 202, 0, 0.2);
+                  color: #B8860B;
+                  border: 1px solid $secondary-color;
+                }
+
+                &.status-en-curso {
+                  background-color: rgba(0, 139, 80, 0.2);
+                  color: $primary-color;
+                  border: 1px solid $primary-color;
+                }
+
+                &.status-finalizado {
+                  background-color: rgba(0, 0, 0, 0.1);
+                  color: $black-color;
+                  border: 1px solid $border-label-color;
+                }
+              }
+            }
+
+            &.action {
+              .realizar-actividad-btn {
+                background-color: $secondary-color;
+                color: $black-color;
+                border: none;
+                padding: 1rem 1.5rem;
+                border-radius: $buttons-border-radius;
+                font-size: $little-font-size;
+                font-weight: 500;
+                font-family: $font-general;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 4px rgba(255, 202, 0, 0.3);
+
+                &:hover:not(.disabled) {
+                  background-color: $secondary-color-light;
+                  transform: translateY(-2px);
+                  box-shadow: 0 4px 8px rgba(255, 202, 0, 0.4);
+                }
+
+                &:active:not(.disabled) {
+                  transform: translateY(0);
+                  box-shadow: 0 2px 4px rgba(255, 202, 0, 0.3);
+                }
+
+                &.disabled {
+                  background-color: $border-label-color;
+                  color: rgba(0, 0, 0, 0.4);
+                  cursor: not-allowed;
+                  box-shadow: none;
+
+                  &:hover {
+                    transform: none;
+                    box-shadow: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .no-activities {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: $black-color;
+      font-size: $font-general-size;
+      font-family: $font-general;
+
+      p {
+        margin: 0;
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .activities-table-container {
+    .table-wrapper {
+      .activities-table {
+        thead {
+          th {
+            padding: 1rem;
+            font-size: $little-font-size;
+          }
+        }
+
+        tbody {
+          tr {
+            td {
+              padding: 1rem;
+              font-size: $little-font-size;
+
+              &.action {
+                .realizar-actividad-btn {
+                  padding: 0.8rem 1.2rem;
+                  font-size: 1.2rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

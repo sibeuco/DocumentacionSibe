@@ -1,0 +1,117 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.modal-container{
+    border-radius: $general-border-radius;
+}
+
+.modal-header{
+    background-color: $primary-color;
+    
+    .btn-close {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.modal-content{
+    width: 100%;
+    overflow-y: auto;
+}
+
+.modal-title{
+    font-weight: bold;
+    color: $white-color;
+    margin: 0 auto;
+}
+
+.form-control{
+    font-size: $font-general-size;
+    width: 85%;
+    height: 30%;
+    border-color: $border-label-color;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.1rem;
+    border-color: black; 
+}
+
+.name-label{
+    width: 85%;
+}
+
+.form-select{
+    font-size: $font-general-size;
+    width: 85%;
+    height: 30%;
+    border-color: $border-label-color;
+}
+
+.form-select:focus {
+    box-shadow: 0 0 0 0.1rem;
+    border-color: black; 
+}
+
+.register-button{
+    background-color: $primary-color;
+    font-size: $font-general-size;
+    border-color: $primary-color;
+    width: 30%;
+}
+
+.cancel-button{
+    font-size: $font-general-size;
+    width: 30%;
+}
+
+.fecha-input-container {
+    input[type="date"] {
+        font-size: $font-general-size;
+        border-color: $border-label-color;
+        height: auto;
+    }
+    
+    .btn-agregar {
+        padding: 0.375rem 0.75rem;
+        font-size: $font-general-size;
+        white-space: nowrap;
+        background-color: $secondary-color;
+        border-color: $secondary-color;
+        color: $black-color;
+        font-weight: 500;
+        
+        &:hover {
+            background-color: $secondary-color-light;
+            border-color: $secondary-color-light;
+            color: $black-color;
+        }
+        
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba(255, 202, 0, 0.5);
+        }
+    }
+}
+
+.fechas-lista {
+    .badge {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 20px;
+        
+        .btn-close {
+            margin-left: 0.5rem;
+            opacity: 0.8;
+            
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.alert {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+}

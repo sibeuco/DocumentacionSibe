@@ -1,0 +1,263 @@
+<div class="modal-container modal fade" id="register-activity-modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <form (ngSubmit)="registrarActividad()" #userForm="ngForm" class="form-container align-items-center justify-content-center">
+                <div class="modal-header col d-flex align-items-center justify-content-center position-relative">
+                    <h1 class="modal-title" id="activityModalLabel">Agregar Actividad</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="nombre" class="form-label">Nombre</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="actividad.nombre" required />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="objetivo" class="form-label">Objetivo</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" id="objetivo" name="objetivo" [(ngModel)]="actividad.objetivo" required />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="semestre" class="form-label">Semestre</label>
+                                <small class="form-text text-muted d-block" style="font-size: 0.85rem; margin-top: 0.25rem;">
+                                    Ejemplo: 202501, 202502, 202601
+                                </small>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="semestre"
+                                name="semestre"
+                                [(ngModel)]="actividad.semestre"
+                                maxlength="6"
+                                required />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="ruta" class="form-label">Ruta insumos</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" id="ruta" name="ruta" [(ngModel)]="actividad.rutaInsumos" required />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="indicador" class="form-label">Indicador</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <select class="form-select" id="indicador" name="indicador"
+                                    [(ngModel)]="indicadorSeleccionado"
+                                    required>
+                                <option value="">Seleccione un indicador</option>
+                                <option *ngFor="let indicador of indicadores" [value]="indicador.identificador">
+                                    {{ indicador.nombre }} - {{ indicador.tipoIndicador.tipologiaIndicador }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="colaborador" class="form-label">Colaborador</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <select class="form-select" id="colaborador" name="colaborador"
+                                    [(ngModel)]="colaboradorSeleccionado"
+                                    (change)="actividad.colaborador = colaboradorSeleccionado"
+                                    required>
+                                <option value="">Seleccione un colaborador</option>
+                                <option *ngFor="let usuario of usuarios" [value]="usuario.identificador">
+                                    {{ usuario.nombres }} {{ usuario.apellidos }}{{ usuario.area?.nombre ? ' – ' + usuario.area!.nombre : '' }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Mostrar información del área si se pasa desde el padre -->
+                    <div class="mb-3" *ngIf="nombreArea && tipoEstructura">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label class="form-label">
+                                    <span *ngIf="tipoEstructura === 'direccion'">Dirección</span>
+                                    <span *ngIf="tipoEstructura === 'area'">Área</span>
+                                    <span *ngIf="tipoEstructura === 'subarea'">Subárea</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" [value]="nombreArea" readonly />
+                        </div>
+                    </div>
+
+                    <!-- Campos de selección solo si NO se pasan desde el padre -->
+                    <div class="mb-3" *ngIf="!nombreArea || !tipoEstructura">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="tipoEstructura" class="form-label">Tipo de Estructura Organizacional</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <select class="form-select" id="tipoEstructura" name="tipoEstructura"
+                                    [(ngModel)]="tipoEstructura"
+                                    (change)="onTipoEstructuraChange()"
+                                    required>
+                                <option value="">Seleccione el tipo</option>
+                                <option *ngFor="let opcion of opcionesTipoEstructura" [value]="opcion.valor">
+                                    {{ opcion.etiqueta }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3" *ngIf="(!nombreArea || !tipoEstructura) && tipoEstructura && listaFiltrada && listaFiltrada.length > 0">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="area" class="form-label">
+                                    <span *ngIf="tipoEstructura === 'direccion'">Seleccionar Dirección</span>
+                                    <span *ngIf="tipoEstructura === 'area'">Seleccionar Área</span>
+                                    <span *ngIf="tipoEstructura === 'subarea'">Seleccionar Subárea</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <select class="form-select" id="area" name="area"
+                                    [(ngModel)]="areaSeleccionada"
+                                    (change)="actividad.area = areaSeleccionada; actividad.tipoArea = determinarTipoArea()"
+                                    required>
+                                <option value="">Seleccione una opción</option>
+                                <option *ngFor="let item of listaFiltrada" [value]="item.identificador">
+                                    {{ item.nombre }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="fechaTemporal" class="form-label">Fecha(s) de la actividad</label>
+                                <small class="form-text text-muted d-block">
+                                    Seleccione una fecha del calendario y haga clic en "Agregar fecha"
+                                </small>
+                            </div>
+                        </div>
+
+                        <!-- Input de fecha con botón agregar -->
+                        <div class="d-flex justify-content-center align-items-center mb-2">
+                            <div class="fecha-input-container d-flex align-items-center" style="width: 85%;">
+                                <input
+                                    type="date"
+                                    class="form-control"
+                                    id="fechaTemporal"
+                                    name="fechaTemporal"
+                                    [(ngModel)]="fechaTemporal"
+                                    [min]="minFechaProgramada"
+                                    style="flex: 1;" />
+                                <button
+                                    type="button"
+                                    class="btn btn-agregar btn-sm ms-2"
+                                    (click)="agregarFecha()"
+                                    title="Agregar fecha a la lista">
+                                    + Agregar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Mensaje de error -->
+                        <div *ngIf="errorFecha" class="alert alert-danger mt-2 mx-auto" style="width: 85%;">
+                            {{ errorFecha }}
+                        </div>
+
+                        <!-- Lista de fechas agregadas -->
+                        <div *ngIf="actividad.fechasProgramadas.length > 0" class="fechas-lista mt-2">
+                            <div class="d-flex justify-content-center">
+                                <div style="width: 85%;">
+                                    <small class="text-secondary">
+                                        <strong>Fechas agregadas ({{ actividad.fechasProgramadas.length }}):</strong>
+                                    </small>
+                                    <div class="d-flex flex-wrap gap-2 mt-2">
+                                        <span *ngFor="let fecha of actividad.fechasProgramadas; let i = index; trackBy: trackByIndex"
+                                              class="badge bg-secondary d-flex align-items-center">
+                                            <span>{{ fecha }}</span>
+                                            <button
+                                                type="button"
+                                                class="btn-close btn-close-white ms-2"
+                                                (click)="eliminarFecha(i)"
+                                                aria-label="Eliminar fecha"
+                                                style="font-size: 0.6rem; padding: 0.2rem;">
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campo oculto para validación requerida -->
+                        <input
+                            type="hidden"
+                            name="fechasValidacion"
+                            [ngModel]="actividad.fechasProgramadas.length > 0 ? 'valid' : ''"
+                            required />
+                    </div>
+
+                    <!-- Mensajes de estado -->
+                    <div *ngIf="cargando" class="mb-3 text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Creando actividad...</span>
+                        </div>
+                        <p class="mt-2 text-muted">Creando actividad...</p>
+                    </div>
+
+                    <div *ngIf="error" class="mb-3">
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <div>{{ error }}</div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="mensajeExito" class="mb-3">
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <div>{{ mensajeExito }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="submit" class="register-button btn btn-primary" [disabled]="!userForm.valid || cargando">
+                    <span *ngIf="!cargando">Registrar</span>
+                    <span *ngIf="cargando">
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        Registrando...
+                    </span>
+                </button>
+                <button type="button" class="cancel-button btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

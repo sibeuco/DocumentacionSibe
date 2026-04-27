@@ -1,0 +1,70 @@
+<div class="filters-container">
+  <div class="filter-row">
+    <div class="filter-group" [class.disabled]="isYearDisabled">
+      <label for="year-filter">Año:</label>
+      <select id="year-filter" [(ngModel)]="selectedYear" (ngModelChange)="onYearChange()" [disabled]="isYearDisabled" class="filter-select">
+        <option value="">Todos los años</option>
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+    </div>
+
+    <div class="filter-group" [class.disabled]="isMonthDisabled">
+      <label for="month-filter">Mes:</label>
+      <select id="month-filter" [(ngModel)]="selectedMonth" (ngModelChange)="onMonthChange()" [disabled]="isMonthDisabled" class="filter-select">
+        <option value="">Todas los meses</option>
+        <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+      </select>
+    </div>
+
+    <div class="filter-group" [class.disabled]="isSemesterDisabled">
+      <label for="semester-filter">Semestre:</label>
+      <select id="semester-filter" [(ngModel)]="selectedSemester" (ngModelChange)="onSemesterChange()" [disabled]="isSemesterDisabled" class="filter-select">
+        <option value="">Todos los semestres</option>
+        <option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="relation-filter">Relación:</label>
+      <select id="relation-filter" [(ngModel)]="selectedRelation" (ngModelChange)="updateFilters()" class="filter-select">
+        <option value="">Todas las relaciones</option>
+        <option *ngFor="let relation of academicRelations" [value]="relation">{{ relation }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="filter-row">
+    <div class="filter-group">
+      <label for="cost-center-filter">Centro de costos:</label>
+      <select id="cost-center-filter" [(ngModel)]="selectedCostCenter" (ngModelChange)="updateFilters()" class="filter-select">
+        <option value="">Todos los centros de costos</option>
+        <option *ngFor="let costCenter of costCenters" [value]="costCenter">{{ costCenter }}</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="academic-program-filter">Programa Academico:</label>
+      <select id="academic-program-filter" [(ngModel)]="selectedAcademicProgram" (ngModelChange)="updateFilters()" class="filter-select">
+        <option value="">Todos los programas académicos</option>
+        <option *ngFor="let program of academicPrograms" [value]="program">{{ program }}</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="program-type-filter">Tipo de programa:</label>
+      <select id="program-type-filter" [(ngModel)]="selectedProgramType" (ngModelChange)="updateFilters()" class="filter-select">
+        <option value="">Todos los tipos de programa</option>
+        <option *ngFor="let programType of programTypes" [value]="programType">{{ programType }}</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="indicator-filter">Indicador:</label>
+      <select id="indicator-filter" [(ngModel)]="selectedIndicator" (ngModelChange)="updateFilters()" class="filter-select">
+        <option value="">Todos los indicadores</option>
+        <option *ngFor="let indicator of indicators" [value]="indicator">{{ indicator }}</option>
+      </select>
+    </div>
+  </div>
+
+</div>

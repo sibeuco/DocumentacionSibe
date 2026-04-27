@@ -1,0 +1,34 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.principal-container{
+    margin-top: $general-margin-top;
+    display: flex;
+    align-items: stretch;
+}
+
+.left-data-container{
+    margin-left: $general-margin-right;
+    width: 48%;
+    display: flex;
+}
+
+.right-data-container{
+    margin-right: $general-margin-right;
+    width: 48%;
+    display: flex;
+}
+
+// Responsividad para móviles
+@media (max-width: 768px) {
+    .principal-container {
+        flex-direction: column;
+    }
+
+    .left-data-container,
+    .right-data-container {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,121 @@
+<div class="activities-table-container">
+  <div class="table-wrapper">
+    <table class="activities-table">
+      <thead>
+        <tr>
+          <th class="sortable" (click)="ordenarPor('nombreActividad')">
+            <span>
+              Nombre Actividad
+              <span class="sort-indicator" [ngClass]="getSortClass('nombreActividad')">
+                <i class="sort-icon">↕</i>
+              </span>
+            </span>
+          </th>
+          <th class="sortable" (click)="ordenarPor('colaborador')">
+            <span>
+              Colaborador
+              <span class="sort-indicator" [ngClass]="getSortClass('colaborador')">
+                <i class="sort-icon">↕</i>
+              </span>
+            </span>
+          </th>
+          <th class="sortable" (click)="ordenarPor('fechaCreacion')">
+            <span>
+              Fecha Creación
+              <span class="sort-indicator" [ngClass]="getSortClass('fechaCreacion')">
+                <i class="sort-icon">↕</i>
+              </span>
+            </span>
+          </th>
+          <th class="sortable" (click)="ordenarPor('fechaProgramada')">
+            <span>
+              Fecha Programada
+              <span class="sort-indicator" [ngClass]="getSortClass('fechaProgramada')">
+                <i class="sort-icon">↕</i>
+              </span>
+            </span>
+          </th>
+          <th>
+            <span>Ruta Insumos</span>
+          </th>
+          <th class="sortable" (click)="ordenarPor('estado')">
+            <span>
+              Estado
+              <span class="sort-indicator" [ngClass]="getSortClass('estado')">
+                <i class="sort-icon">↕</i>
+              </span>
+            </span>
+          </th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="cargando">
+          <td colspan="8" class="text-center">
+            <p>Cargando actividades...</p>
+          </td>
+        </tr>
+        <tr *ngIf="!cargando && error">
+          <td colspan="8" class="text-center error-message">
+            <p>{{ error }}</p>
+          </td>
+        </tr>
+        <tr *ngFor="let actividad of actividadesOrdenadas | paginate: { id: 'actividades', itemsPerPage: 10, currentPage: p, totalItems: totalElementos }; trackBy: trackByActividadId">
+          <td class="activity-name">{{ actividad.nombre }}</td>
+          <td class="collaborator">{{ obtenerNombreColaborador(actividad) }}</td>
+          <td class="creation-date">{{ (actividad.fechaCreacion | date:'dd/MM/yyyy') || 'Sin fecha' }}</td>
+          <td class="programmed-date">{{ obtenerFechaProgramada(actividad) ? (obtenerFechaProgramada(actividad)! | date:'dd/MM/yyyy') : 'Sin fecha' }}</td>
+          <td class="ruta-insumos">{{ actividad.rutaInsumos || 'Sin ruta' }}</td>
+          <td class="status">
+            <span class="status-badge" [ngClass]="getStatusClass(actividad)">
+              {{ calcularEstado(actividad) }}
+            </span>
+          </td>
+          <td class="action">
+            <button
+              class="realizar-actividad-btn"
+              (click)="realizarActividad(actividad)">
+              Gestionar
+            </button>
+          </td>
+          <td class="edit-action">
+            <span [title]="esColaborador ? 'No tienes permitida esta acción.' : ''">
+              <button
+                  type="button"
+                  class="btn btn-outline-warning btn-sm edit-activity-button"
+                  [disabled]="esColaborador"
+                  (click)="abrirModalEditar(actividad)"
+                  title="Editar actividad">
+                  <i class="bi bi-pencil"></i>
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!cargando && !error && actividadesCargadas.length === 0" class="no-activities">
+      <p>Aún no hay actividades registradas.</p>
+    </div>
+  </div>
+  <pagination-controls
+      id="actividades"
+      previousLabel="Anterior"
+      nextLabel="Siguiente"
+      class="my-pagination"
+      (pageChange)="onPageChange($event)">
+  </pagination-controls>
+  <app-edit-activity
+    [actividad]="actividadSeleccionadaEdicion"
+    [nombreArea]="nombreArea"
+    [tipoEstructura]="tipoEstructura"
+    (actividadEditada)="recargarActividades()">
+  </app-edit-activity>
+  <app-date-selector
+    [actividad]="actividadSeleccionadaParaModal"
+    [redirectLink]="rutaRedireccion"
+    (verFecha)="verFechaProgramada($event)"
+    (cerrarModal)="cerrarModalFechas()">
+  </app-date-selector>
+</div>

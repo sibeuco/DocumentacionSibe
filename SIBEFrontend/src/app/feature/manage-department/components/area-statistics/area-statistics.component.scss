@@ -1,0 +1,13 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.cuantity{
+    font-size: $font-big-size;
+    font-weight: bold;
+    color: $dark-green;
+    margin-top: 4rem;
+}
+
+.data-name{
+    font: $font-general;
+    font-weight: bold;
+}

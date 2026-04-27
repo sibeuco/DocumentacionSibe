@@ -1,0 +1,68 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.left-data-container{
+    background-color: $white-color;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-fluid{
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 10%;
+}
+
+.left-data-title{
+    margin-top: $general-margin-top;
+    font-size: $font-general-size;
+    font-weight: bold;
+    color: $dark-green;
+}
+
+.separator{
+    background-color: $dark-green;
+    height: 5px;
+    width: 80%;
+    border-radius: $general-border-radius;
+    margin-bottom: 10%;
+}
+
+.cuantity-container{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cuantity{
+    font-size: 6rem;
+    font-weight: bold;
+}
+
+.data-image-container{
+    margin-left: $general-margin-left;
+    max-height: 80%;
+    width: 100%;
+    flex: 1;
+}
+
+.title-container{
+    flex-shrink: 0;
+}
+
+// Responsividad para móviles
+@media (max-width: 768px) {
+    .img-container {
+        display: none;
+    }
+
+    .data-container {
+        width: 100% !important;
+    }
+
+}

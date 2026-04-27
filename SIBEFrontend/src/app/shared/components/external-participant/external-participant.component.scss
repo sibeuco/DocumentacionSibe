@@ -1,0 +1,61 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.modal-container{
+    border-radius: $general-border-radius;
+}
+
+.modal-header{
+    background-color: $primary-color;
+}
+
+.modal-content{
+    width: 100%;
+}
+
+.modal-title{
+    font-weight: bold;
+    color: $white-color;
+}
+
+.form-control{
+    font-size: $font-general-size;
+    width: 85%;
+    height: 30%;
+    border-color: $border-label-color;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.1rem;
+    border-color: black; 
+}
+
+.name-label{
+    width: 85%;
+}
+
+.register-button{
+    background-color: $primary-color;
+    font-size: $font-general-size;
+    border-color: $primary-color;
+    width: 30%;
+}
+
+.cancel-button{
+    font-size: $font-general-size;
+    width: 30%;
+}
+
+.btn-close{
+    filter: brightness(0) invert(1);
+    opacity: 1;
+    font-weight: bold;
+    font-size: 1.5rem;
+    top: 10px;
+    right: 15px;
+}
+
+.btn-close:hover{
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+

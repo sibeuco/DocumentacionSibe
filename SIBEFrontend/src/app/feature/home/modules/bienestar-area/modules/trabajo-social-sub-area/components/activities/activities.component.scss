@@ -1,0 +1,39 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.activities-container{
+    background-color: $white-color;
+    margin-top: $general-margin-top;
+    width: 98%;
+    margin-left: $general-margin-left;
+    height: 100%;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+}
+
+.activities-title{
+    margin-top: 1rem;
+    font-size: $font-big-size;
+    font-weight: bold;
+    color: $dark-green;
+}
+
+.top-table-container{
+    margin-top: $general-margin-top;
+    margin-bottom: $general-margin-top;
+}
+
+.search-button{
+    width: 90%;
+}
+
+.form-control{
+    height: 40px;
+    font-size: $font-general-size;
+    background-color: $background-color;
+}
+
+input.form-control:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 0.1rem rgba(0, 0, 0, 0.25) ;
+  outline: none;
+}

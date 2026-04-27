@@ -1,0 +1,16 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.home-page{
+    background-color: $background-color;
+    overflow: hidden;
+}
+
+.home-primary-buttons-container{
+    margin-top: none;
+    padding: 0%;
+}
+
+.areas-home{
+    align-items: center;
+    align-content: center;
+}

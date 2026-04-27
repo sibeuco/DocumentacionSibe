@@ -1,0 +1,98 @@
+# ================================================
+# Root .gitignore - SIBE Monorepo
+# SIBEBackend: Spring Boot / Java / Gradle
+# SIBEFrontend: Angular
+# ================================================
+
+# ------------------------------------------------
+# General
+# ------------------------------------------------
+.venv/
+.github/
+
+# ------------------------------------------------
+# OS Files
+# ------------------------------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------------------------------
+# IDE & Editors (Global - aplica a todo el repo)
+# ------------------------------------------------
+.vscode/
+.idea/
+*.iws
+*.iml
+*.ipr
+.project
+.classpath
+.settings/
+.factorypath
+.c9/
+*.launch
+*.sublime-workspace
+.history/
+
+# ================================================
+# SIBEBackend - Spring Boot / Java / Gradle
+# ================================================
+
+# Gradle
+SIBEBackend/.gradle/
+SIBEBackend/build/
+!SIBEBackend/gradle/wrapper/gradle-wrapper.jar
+!SIBEBackend/**/src/main/**/build/
+!SIBEBackend/**/src/test/**/build/
+
+# Spring Tool Suite (STS)
+SIBEBackend/.apt_generated
+SIBEBackend/.springBeans
+SIBEBackend/.sts4-cache
+SIBEBackend/bin/
+!SIBEBackend/**/src/main/**/bin/
+!SIBEBackend/**/src/test/**/bin/
+
+# IntelliJ IDEA
+SIBEBackend/out/
+!SIBEBackend/**/src/main/**/out/
+!SIBEBackend/**/src/test/**/out/
+
+# NetBeans
+SIBEBackend/nbproject/private/
+SIBEBackend/nbbuild/
+SIBEBackend/dist/
+SIBEBackend/nbdist/
+SIBEBackend/.nb-gradle/
+
+# Misc
+SIBEBackend/HELP.md
+
+# ================================================
+# SIBEFrontend - Angular
+# ================================================
+
+# Compiled output
+SIBEFrontend/dist/
+SIBEFrontend/tmp/
+SIBEFrontend/out-tsc/
+SIBEFrontend/bazel-out/
+
+# Node
+SIBEFrontend/node_modules/
+SIBEFrontend/npm-debug.log
+SIBEFrontend/yarn-error.log
+
+# Angular cache
+SIBEFrontend/.angular/
+
+# Sass / CSS
+SIBEFrontend/.sass-cache/
+
+# Testing
+SIBEFrontend/coverage/
+SIBEFrontend/testem.log
+
+# Misc
+SIBEFrontend/connect.lock
+SIBEFrontend/libpeerconnection.log
+SIBEFrontend/typings/

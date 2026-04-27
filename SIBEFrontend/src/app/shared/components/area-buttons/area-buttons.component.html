@@ -1,0 +1,24 @@
+<div class="buttons-container d-flex justify-content-between gap-3">
+  <span *ngFor="let btn of buttons"
+    class="flex-fill"
+    [title]="btn.action === 'generarInforme' && esColaborador ? 'Tu rol no permite realizar esta acción.' : ''">
+    <button
+      class="btn btn-primary w-100"
+      [disabled]="(btn.action === 'generarInforme' && generandoExcel) || (btn.action === 'generarInforme' && esColaborador)"
+      (click)="onButtonClick(btn)">
+      <i class="{{ btn.icon }}"></i>
+      <span *ngIf="!(btn.action === 'generarInforme' && generandoExcel)">{{ btn.text }}</span>
+      <span *ngIf="btn.action === 'generarInforme' && generandoExcel">Generando...</span>
+    </button>
+  </span>
+</div>
+
+<div *ngIf="mensajeError" class="alert alert-danger d-flex align-items-center mt-3" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <div>{{ mensajeError }}</div>
+</div>
+
+<div *ngIf="mensajeExito" class="alert alert-success d-flex align-items-center mt-3" role="alert">
+    <i class="bi bi-check-circle-fill me-2"></i>
+    <div>{{ mensajeExito }}</div>
+</div>

@@ -1,0 +1,24 @@
+<div class="home-page align-items-center justify-content-center">
+    <div class="home-primary-container">
+        <app-principal-home></app-principal-home>
+    </div>
+    <div class="home-primary-buttons-container">
+        <app-home-primary-buttons></app-home-primary-buttons>
+    </div>
+    <div class="areas-home justify-content-center align-items-center">
+        <app-areas></app-areas>
+    </div>
+    <div class="activities-container">
+        <app-activities></app-activities>
+    </div>
+    <div id="home-filters-section" class="filters-home justify-content-center align-items-center">
+        <app-home-filters (filtersChanged)="onFiltersChanged($event)"></app-home-filters>
+    </div>
+    <div class="top-data-container justify-content-center align-items-center">
+        <app-top-data-container [filtersRequest]="filtersRequest"></app-top-data-container>
+    </div>
+    <div class="botton-data-container justify-content-center align-items-center">
+        <app-botton-data-container [filtersRequest]="filtersRequest"></app-botton-data-container>
+    </div>
+    <router-outlet></router-outlet>
+</div>

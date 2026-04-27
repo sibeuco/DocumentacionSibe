@@ -1,0 +1,36 @@
+<div class="department-container col-12">
+    <div class="center-box col-12 d-flex flex-column flex-md-row">
+        <div class="image-container col-md-3 d-none d-md-flex justify-content-center align-items-center">
+            <img src="assets/images/manage.png" class="img-top h-100 w-100" alt="img-top" style="object-fit: cover;">
+        </div>
+        <div class="buttons-container col-12 col-md overlay d-flex flex-column justify-content-center align-items-center">
+            <h1 class="department-title">Dirección de Bienestar y Evangelización</h1>
+            <div class="form-container">
+            </div>
+            <div class="buttons-container d-flex flex-column justify-content-center align-items-center gap-3">
+                <button routerLink="/gestionar-usuarios" type="button" class="btn btn-lg">
+                    <i class="bi bi-people"></i>
+                    Gestionar usuarios
+                </button>
+                <button routerLink="/gestionar-indicadores" type="button" class="btn btn-lg">
+                    <i class="bi bi-graph-up"></i>
+                    Gestionar indicadores
+                </button>
+                <button type="button" class="btn btn-lg" (click)="abrirModalEmpleados()">
+                    <i class="bi bi-database-add"></i>
+                    Cargar BD Empleados
+                </button>
+                <button type="button" class="btn btn-lg" (click)="abrirModalEstudiantes()">
+                    <i class="bi bi-database-add"></i>
+                    Cargar BD Estudiantes
+                </button>
+            </div>
+    </div>
+</div>
+
+<!-- Modal de carga de base de datos -->
+<app-upload-database 
+  #uploadDatabaseComponent
+  (archivoSeleccionado)="onArchivoSeleccionado($event)"
+  (cargaCompleta)="onCargaCompleta($event)">
+</app-upload-database>

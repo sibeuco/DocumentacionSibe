@@ -1,0 +1,39 @@
+<div class="modal-container modal fade" id="external-participant-modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form (ngSubmit)="agregarParticipante()" #participantForm="ngForm" class="form-container align-items-center justify-content-center">
+                <div class="modal-header col d-flex align-items-center justify-content-center position-relative">
+                    <h1 class="modal-title" id="externalParticipantModalLabel">Agregar Participante Externo</h1>
+                    <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="documento" class="form-label">Documento</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" id="documento" name="documento" [(ngModel)]="participante.documento" required />
+                        </div>     
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="nombreCompleto" class="form-label">Nombre Completo</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" id="nombreCompleto" name="nombreCompleto" [(ngModel)]="participante.nombreCompleto" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel-button btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="register-button btn btn-primary" [disabled]="!participantForm.valid">Agregar Participante</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

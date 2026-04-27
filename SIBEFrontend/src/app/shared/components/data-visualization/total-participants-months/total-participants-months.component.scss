@@ -1,0 +1,35 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.data-container {
+    background-color: $white-color;
+    margin-top: $general-margin-top;
+    margin-bottom: 2rem;
+    width: 98%;
+    margin-left: $general-margin-left;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.data-title {
+    margin-top: $general-margin-top;
+    font-size: $font-general-size;
+    font-weight: bold;
+    color: $dark-green;
+}
+
+.chart-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    max-height: 500px;
+    min-height: 400px;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    margin-bottom: $general-margin-bottom;
+}

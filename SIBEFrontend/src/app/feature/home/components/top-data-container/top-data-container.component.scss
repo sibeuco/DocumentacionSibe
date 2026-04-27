@@ -1,0 +1,33 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.principal-container{
+    margin-top: $general-margin-top;
+}
+
+.left-data-container{
+    width: 48%;
+    margin-right: $general-margin-right;
+    margin-left: $general-margin-left;
+}
+
+.right-data-container{
+    margin-right: $general-margin-right;
+    width: 48%;
+    background-color: $white-color;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+    overflow: hidden;
+}
+
+.right-data-title{
+    margin-top: $general-margin-top;
+    font-size: $font-general-size;
+    font-weight: bold;
+    color: $dark-green;
+}
+
+.chart-activities-container{
+    height: 80%;
+    width: 90%;
+}
+

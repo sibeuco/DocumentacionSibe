@@ -1,0 +1,93 @@
+<div class="modal-container modal fade" id="upload-database-modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="form-container align-items-center justify-content-center">
+                <div class="modal-header col d-flex align-items-center justify-content-center position-relative">
+                    <h1 class="modal-title" id="uploadModalLabel">{{ obtenerTituloModal() }}</h1>
+                    <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 text-center">
+                        <span class="badge bg-success text-uppercase px-3 py-2">
+                            {{ obtenerEtiquetaTipo() }}
+                        </span>
+                    </div>
+                    <!-- Información -->
+                    <div class="mb-4 text-center">
+                        <p class="info-text">{{ obtenerDescripcionModal() }}</p>
+                        <p class="info-text-small">Tamano maximo: 40MB</p>
+                    </div>
+
+                    <!-- Input de archivo -->
+                    <div class="mb-3">
+                        <div class="upload-area d-flex flex-column align-items-center justify-content-center" 
+                             [class.has-file]="archivoActual">
+                            <div class="upload-icon mb-3">
+                                <i class="bi bi-file-earmark-excel" style="font-size: 3rem; color: #217346;"></i>
+                            </div>
+                            <label for="fileInput" class="btn btn-secondary-custom mb-2">
+                                <i class="bi bi-upload me-2"></i>Seleccionar Archivo
+                            </label>
+                            <input type="file" 
+                                   id="fileInput" 
+                                   class="d-none" 
+                                   accept=".xlsx,.xls" 
+                                   (change)="onFileSelected($event)">
+                            <p class="text-muted small">o arrastra y suelta aquí</p>
+                        </div>
+                    </div>
+
+                    <!-- Archivo seleccionado -->
+                    <div *ngIf="archivoActual" class="mb-3">
+                        <div class="selected-file d-flex align-items-center justify-content-between">
+                            <div class="file-info d-flex align-items-center">
+                                <i class="bi bi-file-earmark-excel me-2" style="font-size: 1.5rem; color: #217346;"></i>
+                                <div>
+                                    <p class="mb-0 file-name">{{ nombreArchivo }}</p>
+                                    <p class="mb-0 file-size">{{ obtenerTamanoArchivo() }}</p>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-danger" (click)="eliminarArchivo()">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mensajes -->
+                    <div style="min-height: 2rem;" class="text-center mt-3">
+                        <span *ngIf="cargando" class="text-primary">
+                            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            Subiendo archivo al servidor...
+                        </span>
+                        <span *ngIf="!cargando && mensajeError" class="text-danger">
+                            <i class="bi bi-exclamation-circle me-1"></i>{{ mensajeError }}
+                        </span>
+                        <span *ngIf="!cargando && mensajeExito" class="text-success">
+                            <i class="bi bi-check-circle me-1"></i>{{ mensajeExito }}
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" 
+                            class="cancel-button btn btn-secondary" 
+                            data-bs-dismiss="modal"
+                            [disabled]="cargando">
+                        Cancelar
+                    </button>
+                    <button type="button" 
+                            class="upload-button btn btn-primary" 
+                            (click)="cargarArchivo()" 
+                            [disabled]="!archivoActual || cargando">
+                        <span *ngIf="!cargando">
+                            <i class="bi bi-upload me-2"></i>Cargar Archivo
+                        </span>
+                        <span *ngIf="cargando">
+                            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            Cargando...
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

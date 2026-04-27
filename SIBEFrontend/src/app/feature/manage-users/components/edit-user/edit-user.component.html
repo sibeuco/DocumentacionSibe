@@ -1,0 +1,206 @@
+<div class="modal-container modal fade" id="edit-user-modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form (ngSubmit)="actualizarUsuario()" #userForm="ngForm" class="form-container align-items-center justify-content-center">
+                <div class="modal-header col d-flex align-items-center justify-content-center position-relative">
+                    <h1 class="modal-title" id="userModalLabel">Modificar Usuario</h1>
+                    <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="nombre" class="form-label">Nombres</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" id="nombres" name="nombres" [(ngModel)]="usuario.nombres" required />
+                        </div>     
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="apellido" class="form-label">Apellidos</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" id="apellidos" name="apellidos" [(ngModel)]="usuario.apellidos" required />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="tipoIdentificacion" class="form-label">Tipo de identificación</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <select class="form-select" id="tipoIdentificacion" name="tipoIdentificacion" [(ngModel)]="usuario.tipoIdentificacion" required [disabled]="cargandoTiposIdentificacion">
+                                <option value="">Selecciona</option>
+                                <option *ngFor="let tipo of tiposIdentificacion" [value]="tipo.identificador">
+                                    {{ tipo.descripcion }}
+                                </option>
+                            </select>
+                        </div>
+                        
+                        <!-- Estado de carga para tipos de identificación -->
+                        <div *ngIf="cargandoTiposIdentificacion" class="mt-2 text-center">
+                            <small class="text-muted">
+                                <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+                                Cargando tipos de identificación...
+                            </small>
+                        </div>
+                        
+                        <!-- Error al cargar tipos de identificación -->
+                        <div *ngIf="errorTiposIdentificacion" class="mt-2">
+                            <small class="text-danger">
+                                <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                                {{ errorTiposIdentificacion }}
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="numeroIdentificacion" class="form-label">Número de identificación</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" [(ngModel)]="usuario.numeroIdentificacion" required />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="correo" class="form-label">Correo</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="email" class="form-control" id="correo" name="correo" [(ngModel)]="usuario.correo" required />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="tipo" class="form-label">Tipo de usuario</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <select class="form-select" id="tipoUsuario" name="tipoUsuario" [(ngModel)]="usuario.tipoUsuario" (change)="onTipoUsuarioChange()" required [disabled]="cargandoTiposUsuario">
+                                <option value="">Selecciona</option>
+                                <option *ngFor="let tipo of tiposUsuario" [value]="tipo.identificador">
+                                    {{ tipo.nombre }}
+                                </option>
+                            </select>
+                        </div>
+                        
+                        <!-- Estado de carga para tipos de usuario -->
+                        <div *ngIf="cargandoTiposUsuario" class="mt-2 text-center">
+                            <small class="text-muted">
+                                <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+                                Cargando tipos de usuario...
+                            </small>
+                        </div>
+                        
+                        <!-- Error al cargar tipos de usuario -->
+                        <div *ngIf="errorTiposUsuario" class="mt-2">
+                            <small class="text-danger">
+                                <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                                {{ errorTiposUsuario }}
+                            </small>
+                        </div>   
+                    </div>
+
+                    <!-- Campo selector de Departamento (solo para Administrador de dirección) -->
+                    <div class="mb-3" *ngIf="esAdministradorDireccion() && listaDepartamentos && listaDepartamentos.length > 0">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="departamento" class="form-label">Departamento</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <select class="form-select" id="departamento" name="departamento" [(ngModel)]="usuario.estructuraOrganizacional" required [disabled]="cargandoEstructuras">
+                                <option value="">Selecciona</option>
+                                <option *ngFor="let item of listaDepartamentos" [value]="item.identificador">
+                                    {{ item.nombre }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Campo selector de tipo estructura (para otros tipos de usuario) -->
+                    <div class="mb-3" *ngIf="!esAdministradorDireccion()">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="tipoEstructura" class="form-label">Tipo de Estructura</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <select class="form-select" id="tipoEstructura" name="tipoEstructura" [(ngModel)]="usuario.tipoEstructura" (change)="onTipoEstructuraChange()" required [disabled]="cargandoEstructuras">
+                                <option value="">Selecciona el tipo</option>
+                                <option *ngFor="let opcion of opcionesTipoEstructura" [value]="opcion.valor">
+                                    {{ opcion.etiqueta }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Campo desplegable condicional (para otros tipos de usuario) -->
+                    <div class="mb-3" *ngIf="!esAdministradorDireccion() && usuario.tipoEstructura && listaFiltrada && listaFiltrada.length > 0">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="estructuraOrganizacional" class="form-label">
+                                    {{ usuario.tipoEstructura === 'area' ? 'Seleccionar Área' : 'Seleccionar Subárea' }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <select class="form-select" id="estructuraOrganizacional" name="estructuraOrganizacional" [(ngModel)]="usuario.estructuraOrganizacional" required [disabled]="cargandoEstructuras">
+                                <option value="">Selecciona</option>
+                                <option *ngFor="let item of listaFiltrada" [value]="item.identificador">
+                                    {{ item.nombre }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Mensajes de estado -->
+                    <div *ngIf="cargando" class="mb-3 text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Actualizando usuario...</span>
+                        </div>
+                        <p class="mt-2 text-muted">Actualizando usuario...</p>
+                    </div>
+
+                    <div *ngIf="error" class="mb-3">
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <div>{{ error }}</div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="mensajeExito" class="mb-3">
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <div>{{ mensajeExito }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="cancel-button btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="register-button btn btn-primary" [disabled]="!userForm.valid || cargando">
+                    <span *ngIf="!cargando">Actualizar</span>
+                    <span *ngIf="cargando">
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        Actualizando...
+                    </span>
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

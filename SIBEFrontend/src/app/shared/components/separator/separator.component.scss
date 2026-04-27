@@ -1,0 +1,8 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.separator{
+    background-color: $secondary-color;
+    width: 90%;
+    height: 0.5rem;
+    border-radius: $general-border-radius;
+}

@@ -1,0 +1,96 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.left-data-container{
+    background-color: $white-color;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-fluid{
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 10%;
+}
+
+.cuantity-title{
+    font-size: $font-general-size;
+    font-weight: bold;
+    color: $dark-green;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.cuantity-container{
+    margin-top: 1rem;
+}
+
+.cuantity{
+    font-size: 4rem;
+    font-weight: bold;
+    background-color: rgba($primary-color, 0.2);
+    padding: 1rem 2rem;
+    border-radius: $general-border-radius;
+    min-width: 200px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cuantity-attendance-container{
+    margin-top: 1rem;
+}
+
+.cuantity-attendance{
+    font-size: 4rem;
+    font-weight: bold;
+    background-color: rgba($secondary-color, 0.2);
+    padding: 1rem 2rem;
+    border-radius: $general-border-radius;
+    min-width: 200px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-image-container{
+    margin-left: $general-margin-left;
+    max-height: 80%;
+    width: 100%;
+    flex: 1;
+}
+
+.img-container{
+    margin-top: 10%;
+}
+
+// Responsividad para móviles
+@media (max-width: 768px) {
+    .img-container {
+        display: none;
+    }
+
+    .data-container {
+        width: 100% !important;
+    }
+
+    .cuantity {
+        font-size: 3rem;
+        min-width: 150px;
+        min-height: 80px;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .cuantity-attendance {
+        font-size: 3rem;
+        min-width: 150px;
+        min-height: 80px;
+        padding: 0.8rem 1.5rem;
+    }
+}

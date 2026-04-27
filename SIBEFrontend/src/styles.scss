@@ -1,0 +1,29 @@
+@import "assets/scss/partials/_buttons.scss";
+@import "assets/scss/modules/_var.scss";
+@import "assets/scss/partials/_global.scss";
+@import "assets/scss/partials/_reset.scss";
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Estilos de paginación (ngx-pagination) ===== */
+
+.ngx-pagination .current {
+  background-color: #008B50 !important;
+  border-radius: 5px !important;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
+  background: transparent !important;
+}

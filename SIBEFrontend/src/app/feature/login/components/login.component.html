@@ -1,0 +1,26 @@
+<div class="login-page d-flex align-items-center justify-content-center">
+    <div class="center-box col-12 col-md-10 col-lg-8 col-xl-6 d-flex flex-column flex-md-row">
+        <div class="login-image col-md-6 d-none d-md-block">
+            <img src="assets/images/Mujer-trabajando-en-computador-UCO-1.webp" alt="Imagen login"/>
+        </div>
+        <div class="formulario col-12 col-md-6" [formGroup]="formularioLogin">
+            <h1 class="iniciar-sesion">Iniciar sesión</h1>
+            <form class="barra"></form>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" formControlName="userInput" placeholder="name@example.com">
+                <label class="usuario-input" for="floatingInput">Usuario</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" formControlName="passwordInput" placeholder="Password">
+                <label class="usuario-input" for="floatingPassword">Contraseña</label>
+            </div>
+            <div style="height: 2rem;" class="text-center mt-4">
+                <span *ngIf="mensajeError" class="text-danger">{{ mensajeError }}</span>
+            </div>
+            <button type="button" class="btn btn-lg" (click)="login()" [disabled]="formularioLogin.invalid">Ingresar</button>
+            <p class="mt-3">
+                <a routerLink="/recuperar-contrasena" class="text-muted">¿Olvidaste tu contraseña?</a>
+            </p>
+        </div>
+    </div>
+</div>

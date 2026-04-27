@@ -1,0 +1,20 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.go-to-button{
+    background-color: $secondary-color;
+    margin-top: 80%;
+    margin-bottom: 20%;
+    font-size: 2rem;
+    border-radius: 2rem;
+    color: $white-color;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+    transform: scale(1.1);
+    background-color: $secondary-color-light;
+    }
+
+    &:active {
+        transform: scale(0.97);
+    }
+}

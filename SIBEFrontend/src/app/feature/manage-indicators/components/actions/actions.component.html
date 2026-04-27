@@ -1,0 +1,92 @@
+<div class="actions-container col-12 justify-content-center">
+    <div class="title-container d-flex justify-content-center align-items-center">
+        <h1 class="actions-title">Acciones</h1>
+    </div>
+    <app-separator></app-separator>
+    <div class="top-table-container col-12 d-flex align-items-center justify-content-center">
+        <div class="search-button row align-items-center justify-content-between mt-3">
+            <div class="search-container col-md-6 col-12 mb-2 mb-md-0">
+                <input
+                    type="search"
+                    class="form-control"
+                    placeholder="Buscar Acción..."
+                    [(ngModel)]="searchTerm"
+                    (input)="filterActions()" />
+            </div>
+            <div class="button-container col-md-4 col-12 d-flex justify-content-md-end justify-content-center">
+                <app-primary-button
+                    [modalTargetId]="'register-action-modal'"
+                    [icon]="'bi bi-plus-circle'"
+                    [text]="'Agregar nueva acción'">
+                </app-primary-button>
+                <app-register-new-action (accionCreada)="obtenerAcciones()"></app-register-new-action>
+            </div>
+        </div>
+    </div>
+    <div class="table-container col-12 d-flex flex-column align-items-center justify-content-center">
+        <div class="tabla-wrapper col-12 table-responsive">
+            <table class="table table-hover">
+                <thead class="table">
+                <tr>
+                    <th>Detalle</th>
+                    <th>Objetivo</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <!-- Estado de carga -->
+                    <tr *ngIf="cargando">
+                        <td colspan="3" class="text-center py-4">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Mensaje de error -->
+                    <tr *ngIf="!cargando && error">
+                        <td colspan="3" class="text-center py-4">
+                            <div class="alert alert-danger mb-0" role="alert">
+                                {{ error }}
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Mensaje cuando no hay datos -->
+                    <tr *ngIf="!cargando && !error && accionesFiltradas.length === 0">
+                        <td colspan="3" class="text-center py-4 text-muted">
+                            No se encontraron acciones
+                        </td>
+                    </tr>
+
+                    <!-- Datos de la tabla -->
+                    <tr *ngFor="let action of accionesFiltradas | paginate : { id: 'acciones', itemsPerPage: 10, currentPage: p, totalItems: totalElementos }">
+                        <td>{{ action.detalle }}</td>
+                        <td>{{ action.objetivo }}</td>
+                        <td class="text-center">
+                            <button
+                                type="button"
+                                class="btn btn-outline-warning btn-sm edit-action-button"
+                                (click)="abrirModalEdicion(action)"
+                                title="Editar acción">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination-controls
+            id="acciones"
+            previousLabel="Anterior"
+            nextLabel="Siguiente"
+            class="my-pagination"
+            (pageChange)="onPageChange($event)">
+        </pagination-controls>
+    </div>
+    <app-edit-action
+        [accionAEditar]="accionSeleccionada"
+        (accionModificada)="onAccionModificada($event)"
+        (accionCancelada)="onAccionCancelada()">
+    </app-edit-action>
+</div>

@@ -1,0 +1,55 @@
+<div class="modal-container modal fade" id="register-action-modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form (ngSubmit)="registrarAccion()" #userForm="ngForm" class="form-container align-items-center justify-content-center">
+                <div class="modal-header col d-flex align-items-center justify-content-center position-relative">
+                    <h1 class="modal-title" id="actionModalLabel">Agregar Acción</h1>
+                    <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="detalle" class="form-label">Detalle de la acción</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" id="detalle" name="detalle" [(ngModel)]="accion.detalle" required />
+                        </div>     
+                    </div>
+                    <div class="mb-3">
+                        <div class="name-label-container d-flex justify-content-center align-items-center">
+                            <div class="name-label">
+                                <label for="objetivo" class="form-label">Objetivo de la acción</label>
+                            </div>
+                        </div>
+                        <div class="name-input d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" id="objetivo" name="objetivo" [(ngModel)]="accion.objetivo" required />
+                        </div>     
+                    </div>
+                    
+                    <!-- Mensaje de éxito -->
+                    <div class="mb-3" *ngIf="exito">
+                        <div class="alert alert-success text-center" role="alert">
+                            <i class="bi bi-check-circle me-2"></i>{{ exito }}
+                        </div>
+                    </div>
+                    
+                    <!-- Mensaje de error -->
+                    <div class="mb-3" *ngIf="error">
+                        <div class="alert alert-danger text-center" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="cancel-button btn btn-secondary" data-bs-dismiss="modal" [disabled]="cargando">Cancelar</button>
+                <button type="submit" class="register-button btn btn-primary" [disabled]="!userForm.valid || cargando">
+                    <span *ngIf="cargando" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    {{ cargando ? 'Registrando...' : 'Registrar' }}
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

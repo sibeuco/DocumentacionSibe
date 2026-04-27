@@ -1,0 +1,25 @@
+<div class="sub-areas-container">
+  <div class="title-container d-flex justify-content-center align-items-center">
+    <h1 class="sub-areas-title">Mis áreas</h1>
+  </div>
+  <app-separator></app-separator>
+
+  <!-- Swiper container -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div *ngFor="let area of areas" class="swiper-slide">
+        <div class="card bienestar-card">
+          <img [src]="area.imagen" class="card-img-top h-100 w-100" alt="{{ area.titulo }}">
+          <div class="overlay position-absolute w-100 h-100 d-flex flex-column justify-content-end align-items-center">
+            <h5 class="text-area">{{ area.titulo }}</h5>
+            <app-go-to-area-button [text]="'Ir al área'" [routerLink]="area.link"></app-go-to-area-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Controles -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>

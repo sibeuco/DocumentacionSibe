@@ -1,0 +1,105 @@
+@use 'src/assets/scss/modules/_var.scss' as *;
+.header{
+    background-color: $primary-color;
+}
+
+.header-text{
+    color: $white-color;
+    font-size: $font-general-size;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $secondary-color;
+    }
+}
+
+// Estilos para el contenedor del dropdown
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+// Estilos para el botón de usuario
+.user-button {
+    background-color: transparent;
+    border: 2px solid $white-color;
+    color: $white-color;
+    font-size: $font-general-size;
+    padding: 0.5rem 1rem;
+    border-radius: $buttons-border-radius;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+
+    &:hover {
+        background-color: $white-color;
+        color: $primary-color;
+        border-color: $white-color;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+    }
+
+    i {
+        font-size: 1.2rem;
+    }
+}
+
+// Estilos para el dropdown
+.dropdown-menu {
+    border: none;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+    padding: 0.5rem 0;
+    min-width: 100%;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    overflow: hidden;
+
+    .dropdown-item {
+        padding: 0.75rem 1.5rem;
+        font-size: $font-general-size;
+        color: $black-color;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 0;
+        margin: 0;
+
+        &:hover {
+            background-color: $background-color;
+            color: $primary-color;
+            box-shadow: none;
+            transform: none;
+        }
+
+        &.text-danger {
+            color: $red-color !important;
+
+            &:hover {
+                background-color: rgba(255, 84, 118, 0.1);
+                color: $red-color !important;
+                box-shadow: none;
+                transform: none;
+            }
+        }
+
+        i {
+            font-size: 1rem;
+        }
+    }
+
+    .dropdown-divider {
+        margin: 0.5rem 0;
+        border-color: #e9ecef;
+    }
+}

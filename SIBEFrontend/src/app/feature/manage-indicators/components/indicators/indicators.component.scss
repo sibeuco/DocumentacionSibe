@@ -1,0 +1,63 @@
+@use "src/assets/scss/modules/_var.scss" as *;
+
+.indicators-container{
+    background-color: $white-color;
+    margin-top: 2%;
+    margin-bottom: $margin-from-footer;
+    width: 98%;
+    margin-left: 1%;
+    min-height: 400px;
+    border-radius: $general-border-radius;
+    box-shadow: $sombra-general;
+    overflow: visible;
+}
+
+.indicators-title{
+    font-size: $font-big-size;
+    font-weight: bold;
+    color: $dark-green;
+    margin-top: 1rem;
+}
+
+.top-table-container{
+    margin-top: $general-margin-top;
+}
+
+.search-button{
+    width: 90%;
+}
+
+.form-control{
+    height: 40px;
+    font-size: $font-general-size;
+    background-color: $background-color;
+}
+
+input.form-control:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 0.1rem rgba(0, 0, 0, 0.25) ;
+  outline: none;
+}
+
+.tabla-wrapper {
+  max-height: 40vh;
+  max-width: 90%;
+  margin-top: $general-margin-top;
+  font-size: $font-general-size;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.edit-indicator-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  font-size: 1.1rem;
+  padding: 0;
+}
+
+.edit-user-button i {
+  margin: 0;
+}

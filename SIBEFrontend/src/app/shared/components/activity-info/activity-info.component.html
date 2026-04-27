@@ -1,0 +1,93 @@
+<div class="activity-info-container">
+    <!-- Título principal -->
+    <div class="title-container d-flex justify-content-center align-items-center">
+        <h1 class="activity-info">Registro de Asistencia</h1>
+    </div>
+
+    <div *ngIf="cargando" class="loading-container text-center my-4">
+        <span class="spinner-border text-primary" role="status"></span>
+        <p class="mt-2">Cargando información de la actividad...</p>
+    </div>
+
+    <div *ngIf="!cargando && error" class="alert alert-danger text-center">
+        {{ error }}
+    </div>
+
+    <div class="activity-details-container" *ngIf="!cargando && !error && actividadSeleccionada as actividad">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-lg-12">
+                <!-- Nombre de la actividad -->
+                <div class="info-row mb-3 justify-content-center">
+                    <div class="info-label">
+                        <label class="form-label fw-bold">Actividad:</label>
+                    </div>
+                    <div class="info-value">
+                        <p class="info-text">{{ actividad.nombre }}</p>
+                    </div>
+                </div>
+
+                <!-- Colaborador -->
+                <div class="info-row mb-3 justify-content-center">
+                    <div class="info-label">
+                        <label class="form-label fw-bold">Colaborador:</label>
+                    </div>
+                    <div class="info-value">
+                        <p class="info-text">{{ actividad.colaborador }}</p>
+                    </div>
+                </div>
+
+                <!-- Objetivo -->
+                <div class="info-row mb-3 justify-content-center">
+                    <div class="info-label">
+                        <label class="form-label fw-bold">Objetivo:</label>
+                    </div>
+                    <div class="info-value">
+                        <p class="info-text">{{ actividad.objetivo }}</p>
+                    </div>
+                </div>
+
+                <!-- Indicador -->
+                <div class="info-row mb-3 justify-content-center">
+                    <div class="info-label">
+                        <label class="form-label fw-bold">Indicador:</label>
+                    </div>
+                    <div class="info-value">
+                        <p class="info-text">{{ actividad.indicador }}</p>
+                    </div>
+                </div>
+
+                <!-- Fecha de realización - Solo se muestra si el estado es FINALIZADA -->
+                <div class="info-row mb-3 justify-content-center" *ngIf="esActividadFinalizada()">
+                    <div class="info-label">
+                        <label class="form-label fw-bold">Fecha de Realización:</label>
+                    </div>
+                    <div class="info-value">
+                        <p class="info-text">{{ formatearFechaRealizacion(actividad.fechaRealizacion) }}</p>
+                    </div>
+                </div>
+
+                <!-- Fecha programada (opcional) -->
+                <div class="info-row mb-3 justify-content-center" *ngIf="actividad.fechaProgramada">
+                    <div class="info-label">
+                        <label class="form-label fw-bold">Fecha programada:</label>
+                    </div>
+                    <div class="info-value">
+                        <p class="info-text">{{ formatearFechaProgramada(actividad.fechaProgramada) }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje cuando no hay actividad seleccionada -->
+    <div class="no-activity-container" *ngIf="!cargando && !error && !actividadSeleccionada">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="alert alert-info text-center">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <p class="mb-0">No hay actividad seleccionada para mostrar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
