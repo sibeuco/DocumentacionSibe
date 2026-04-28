@@ -6,6 +6,7 @@ import co.edu.uco.sibe.infraestructura.seguridad.filter.*;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -15,12 +16,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import static co.edu.uco.sibe.dominio.transversal.constante.ApiEndpointConstante.*;
 import static co.edu.uco.sibe.dominio.transversal.constante.NumeroConstante.TRES_MIL_SEICIENTOS_LONG;
 import static co.edu.uco.sibe.dominio.transversal.constante.SeguridadConstante.JWT_HEADER;
-import static co.edu.uco.sibe.dominio.transversal.constante.SeguridadConstante.LOCAL_FRONT_URL;
 import static co.edu.uco.sibe.dominio.transversal.constante.TextoConstante.*;
 
 /**
@@ -47,6 +48,7 @@ import static co.edu.uco.sibe.dominio.transversal.constante.TextoConstante.*;
 public class ProjectSecurityConfig {
     private final UsuarioOrganizacionDAO usuarioOrganizacionDAO;
     private final UsuarioDAO usuarioDAO;
+    private final Environment environment;
 
     /**
      * Configures the application's SecurityFilterChain, which defines all the
@@ -90,7 +92,8 @@ public class ProjectSecurityConfig {
                 // Configure CORS to allow the frontend origin and expose the JWT header
                 .cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
-                    config.setAllowedOrigins(List.of(LOCAL_FRONT_URL));
+                    String allowedOrigins = environment.getProperty("app.cors.allowed-origins", "http://localhost:4200");
+                    config.setAllowedOrigins(Arrays.asList(allowedOrigins.split(",")));
                     config.setAllowedMethods(Collections.singletonList(ASTERISK));
                     config.setAllowCredentials(true);
                     config.setAllowedHeaders(Collections.singletonList(ASTERISK));
